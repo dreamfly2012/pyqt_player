@@ -13,23 +13,34 @@
   <property name="windowTitle">
    <string>音乐播放器by梦回故里</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QPushButton" name="playbtn">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>90</x>
      <y>400</y>
-     <width>75</width>
-     <height>23</height>
+     <width>31</width>
+     <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">#playbtn{
+	border-radius:15px;
+background-color:red;
+	font: 10pt &quot;楷体&quot;;
+color:#fff;
+}</string>
+   </property>
    <property name="text">
-    <string>播放</string>
+    <string>||</string>
    </property>
   </widget>
   <widget class="QSlider" name="horizontalSlider">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>240</x>
      <y>400</y>
      <width>160</width>
      <height>19</height>
@@ -42,14 +53,73 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>170</y>
+     <x>10</x>
+     <y>10</y>
      <width>75</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
     <string>添加文件+</string>
+   </property>
+  </widget>
+  <widget class="QListView" name="listView">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>90</y>
+     <width>131</width>
+     <height>241</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QSlider" name="durantionSlider">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>360</y>
+     <width>501</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLCDNumber" name="lcdNumber">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>150</y>
+     <width>281</width>
+     <height>121</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="prevbtn">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>400</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="nextbtn">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>400</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&gt;</string>
    </property>
   </widget>
  </widget>
@@ -62,8 +132,8 @@
    <slot>play()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>51</x>
-     <y>237</y>
+     <x>120</x>
+     <y>400</y>
     </hint>
     <hint type="destinationlabel">
      <x>84</x>
@@ -78,8 +148,8 @@
    <slot>valuechanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>170</x>
-     <y>228</y>
+     <x>340</x>
+     <y>400</y>
     </hint>
     <hint type="destinationlabel">
      <x>171</x>
@@ -103,11 +173,61 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>nextbtn</sender>
+   <signal>released()</signal>
+   <receiver>Form</receiver>
+   <slot>next()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>180</x>
+     <y>417</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>204</x>
+     <y>390</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>prevbtn</sender>
+   <signal>released()</signal>
+   <receiver>Form</receiver>
+   <slot>prev()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>47</x>
+     <y>415</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>47</x>
+     <y>390</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>durantionSlider</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>durantionSlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>447</x>
+     <y>371</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>447</x>
+     <y>371</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>play()</slot>
   <slot>stop()</slot>
   <slot>valuechanged()</slot>
   <slot>fileopen()</slot>
+  <slot>prev()</slot>
+  <slot>next()</slot>
  </slots>
 </ui>
