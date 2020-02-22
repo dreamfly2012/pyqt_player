@@ -208,16 +208,16 @@ color:#fff;
   <connection>
    <sender>durantionSlider</sender>
    <signal>sliderMoved(int)</signal>
-   <receiver>durantionSlider</receiver>
-   <slot>setValue(int)</slot>
+   <receiver>Form</receiver>
+   <slot>slidermoved()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>447</x>
-     <y>371</y>
+     <x>373</x>
+     <y>365</y>
     </hint>
     <hint type="destinationlabel">
-     <x>447</x>
-     <y>371</y>
+     <x>369</x>
+     <y>329</y>
     </hint>
    </hints>
   </connection>
@@ -229,5 +229,6 @@ color:#fff;
   <slot>fileopen()</slot>
   <slot>prev()</slot>
   <slot>next()</slot>
+  <slot>slidermoved()</slot>
  </slots>
 </ui>

@@ -54,7 +54,7 @@ class Ui_Form(object):
         self.pushButton.clicked.connect(Form.fileopen)
         self.nextbtn.released.connect(Form.next)
         self.prevbtn.released.connect(Form.prev)
-        self.durantionSlider.sliderMoved['int'].connect(self.durantionSlider.setValue)
+        self.durantionSlider.sliderMoved['int'].connect(Form.slidermoved)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):

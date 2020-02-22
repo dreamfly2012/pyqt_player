@@ -15,6 +15,9 @@ class Player(QMainWindow,Ui_Form):
         self.qList = []
         self.playlist = QMediaPlaylist()
         self.listView.clicked.connect(self.clickedlist)		 #listview 的点击事件 
+        self.player.durationChanged.connect(self.durationChanged)
+        self.player.positionChanged.connect(self.positionChanged)
+        #self.durantionSlider.SliderMove
         #self.UI_Form.playbtn.clicked.connect(self.play)
         #self.stopbtn.clicked.connect(self.stop)
         
@@ -29,6 +32,10 @@ class Player(QMainWindow,Ui_Form):
         self.playlist.setCurrentIndex(1)
         self.start()
 
+
+    def setValue(self):
+        print("value set...")    
+
     #初始化播放器
     def start(self):
         self.player = QMediaPlayer()
@@ -40,6 +47,32 @@ class Player(QMainWindow,Ui_Form):
         self.player.setPlaylist(self.playlist)
         self.player.setVolume(5)
         self.play()
+
+    #定义position 改变
+    def positionChanged(self):
+        position = self.player.position()
+        duration = self.player.duration()
+        if duration == 0:
+            percent = 0
+        else: 
+            percent = int((position/duration)*100)   
+
+        self.durantionSlider.setValue(percent)    
+        print(percent)
+
+    #定义滚动条滚动(bug拖动影响)
+    def slidermoved(self):
+        value = self.durantionSlider.value()
+        duration = self.player.duration()
+        if duration == 0:
+            position = 0
+        else: 
+            position = int((value/100)*duration) 
+        self.player.setPosition(position)        
+
+    #定义duration改变
+    def durationChanged(self):
+        print(self.player.duration())
          
         
     #控制播放，暂停
